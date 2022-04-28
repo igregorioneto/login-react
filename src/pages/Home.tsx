@@ -1,11 +1,21 @@
+import { FormEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import '../styles/home.scss';
 import { FaGooglePlusG } from 'react-icons/fa';
-
-import { Link } from 'react-router-dom';
 
 import games from '../assets/images/games.jpg';
 
 export function Home() {
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const [termos, setTermos] = useState(false);
+
+    function handleValuesInputs(event: FormEvent) {
+      event.preventDefault();
+      console.log(email, senha, termos)
+    }
+
     return (
       <div className="container">
           <aside>
@@ -34,25 +44,30 @@ export function Home() {
 
                 <span className='separador'>or</span>
 
-                <form className='formulario'>
+                <form onSubmit={handleValuesInputs} className='formulario'>
                     <label>Email address</label>
                     <input 
                       type="text" 
                       placeholder='Email address' 
                       className='input-form'
+                      onChange={event => setEmail(event.target.value)}
+                      value={email}
                     />
 
                     <label>Password</label>
                     <input 
-                      type="text" 
+                      type="password" 
                       placeholder='Password' 
                       className='input-form'
+                      onChange={event => setSenha(event.target.value)}
+                      value={senha}
                     />
 
                   <span className='termos-registrar'>
                     <input 
                       type="checkbox"
-                      value="false"
+                      checked={termos}
+                      onChange={event => setTermos(event.target.checked)}
                     /> 
                       I agree to Platform's 
                     <Link 
