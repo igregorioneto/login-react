@@ -1,0 +1,191 @@
+.container {
+    display: flex;
+
+    aside {
+        flex: 1;
+        padding: 10px;
+        height: 100vh;
+        background: black;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            height: 100vh;
+        }
+    }
+
+    main {
+        flex: 1;
+        padding: 10px;
+        height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 40px;
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        span {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            color: rgb(170, 170, 170);
+            
+            p {
+                text-align: center;                
+            }
+
+            .logar {
+                color: orange;
+                margin-left: 5px;
+                font-weight: bold;
+            }
+        }
+
+        .register-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .registrar {
+                padding: 0 32px;
+                margin: 64px 15px 0 0;
+                height: 50px;
+                border-radius: 8px;
+                font-weight: 500;
+                background: #ea4335;
+                color: #FFF;
+    
+                display: flex;
+                justify-content: center;
+                align-items: center;
+    
+                cursor: pointer;
+                border: 0;
+    
+                transition: filter 0.2s;
+    
+                img {
+                    margin-right: 8px;
+                }
+    
+                &:hover {
+                    filter:brightness(0.9);
+                }
+    
+                .icon {
+                    width: 20px;
+                    height: 20px;
+                    background: none;
+                    margin-right: 5px;
+                    color: #FFF;
+                }
+            }
+    
+            .facebook {
+                background: #3b5998;
+            }
+        }
+
+        .separador {
+            font-size: 14px;
+            
+            margin: 32px 0;
+            display: flex;
+            align-items: center;
+
+            &::before {
+                content: '';
+                flex: 1;
+                height: 1px;
+                margin-right: 16px;
+                background: rgb(170, 170, 170);
+            }
+
+            &::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                margin-left: 16px;
+                background: rgb(170, 170, 170);
+            }
+        }
+
+        .formulario {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            label {
+                text-align: right;
+                font-size: 16px;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bolder;
+            }
+
+            .input-form {
+                height: 50px;
+                border-radius: 8px;
+                border: 1px solid rgb(151, 150, 150);
+                padding: 10px;
+                margin: 10px 0 25px 0;
+                width: 100%;
+            }
+
+            .termos-registrar {
+                > input {
+                    margin-right: 10px;
+                }
+
+                .termos {
+                    color: rgb(255, 51, 0);
+                    margin: 0 5px;
+                    font-weight: bold;
+                }
+            }  
+            
+
+            button {
+                padding: 0 32px;
+                margin: 20px;
+                width: 100%;
+                height: 50px;
+                border-radius: 8px;
+                font-weight: 500;
+                background: rgb(255, 51, 0);
+                color: #FFF;
+    
+                cursor: pointer;
+                border: 0;
+    
+                transition: filter 0.2s;
+    
+                img {
+                    margin-right: 8px;
+                }
+    
+                &:hover {
+                    filter:brightness(0.9);
+                }
+    
+                .icon {
+                    width: 20px;
+                    height: 20px;
+                    background: none;
+                    margin-right: 5px;
+                    color: #FFF;
+                }
+            }
+
+        }
+
+        
+    }
+}
