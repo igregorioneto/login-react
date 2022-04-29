@@ -1,19 +1,35 @@
 import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 
 import '../styles/home.scss';
 import { FaGooglePlusG } from 'react-icons/fa';
 
 import games from '../assets/images/games.jpg';
+import { useAuth } from './../hooks/useAuth';
 
 export function Home() {
+    const history = useHistory();
+    const { user, signInWithGoogle, createUserWithEmailAndPassword } = useAuth();
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [termos, setTermos] = useState(false);
 
-    function handleValuesInputs(event: FormEvent) {
+    async function handleAccountGoogle() {
+      if(!user && termos) {
+        await signInWithGoogle();
+      }
+
+      history.push('/bem-vindo');
+    }
+
+    async function handleValuesInputs(event: FormEvent) {
       event.preventDefault();
-      console.log(email, senha, termos)
+      if (termos) {
+        await createUserWithEmailAndPassword({ email, senha });
+      }
+
+      await history.push('/bem-vindo');
     }
 
     return (
@@ -27,11 +43,14 @@ export function Home() {
               <div className="conteudo">
                 <h1>Get's started</h1>
                 <span>
-                  <p>Already have an account?<Link to="/" className='logar'>Log in.</Link></p>
+                  <p>Already have an account?<a href="/login" className='logar'>Log in.</a></p>
                 </span>
 
                 <div className="register-buttons">
-                  <button className='registrar'>
+                  <button 
+                    onClick={handleAccountGoogle}
+                    className='registrar' 
+                  >
                       <FaGooglePlusG className='icon'/>
                       Sign up with Google 
                   </button>
